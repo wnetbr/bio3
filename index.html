@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Official Access | Premium Identity</title>
@@ -11,23 +11,26 @@
             --primary-blue: #0071e3;
             --apple-black: #1d1d1f;
             --apple-grey: #6e6e73;
-            --glass: rgba(255, 255, 255, 0.72);
-            --border: rgba(0, 0, 0, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.48);
+            --glass-border: rgba(255, 255, 255, 0.8);
+            --inner-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4);
         }
 
-        /* Reset e Suavização de Fontes */
+        /* Renderização Ultra-Nítida */
         * { 
             margin: 0; 
             padding: 0; 
             box-sizing: border-box; 
             -webkit-font-smoothing: antialiased; 
             -moz-osx-font-smoothing: grayscale; 
+            text-rendering: optimizeLegibility;
         }
 
         body {
-            background: radial-gradient(at 0% 0%, #ffffff 0%, transparent 40%),
-                        radial-gradient(at 100% 0%, #f0f0f2 0%, transparent 40%),
-                        radial-gradient(at 50% 100%, #e8e8ed 0%, #ffffff 100%);
+            /* Fundo Mesh de Ultra Definição */
+            background: radial-gradient(at 0% 0%, #ffffff 0%, transparent 45%),
+                        radial-gradient(at 100% 0%, #f5f5f7 0%, transparent 45%),
+                        radial-gradient(at 50% 100%, #eef0f3 0%, #ffffff 100%);
             background-color: #f5f5f7;
             font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             color: var(--apple-black);
@@ -35,72 +38,76 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 24px;
         }
 
-        /* MOLDURA QUADRADA */
+        /* PAINEL 8K GLASSMORPHISM */
         .glass-panel {
             width: 100%;
-            max-width: 420px;
-            background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-radius: 44px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+            max-width: 410px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border-radius: 50px; /* Curvatura Pro Max */
+            border: 1px solid var(--glass-border);
+            box-shadow: 
+                0 40px 80px rgba(0,0,0,0.05),
+                0 10px 20px rgba(0,0,0,0.02),
+                var(--inner-shadow);
             position: relative;
             overflow: hidden;
-            animation: appleFade 1.2s cubic-bezier(0.15, 0, 0.2, 1) forwards;
+            animation: appleEntry 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes appleFade {
-            from { opacity: 0; transform: scale(0.98) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+        @keyframes appleEntry {
+            from { opacity: 0; transform: scale(0.96) translateY(30px); filter: blur(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
         }
 
         .container {
             width: 100%;
-            padding: 60px 24px;
+            padding: 55px 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
+        /* Seção Avatar com Brilho Dinâmico */
         .avatar-box {
             position: relative;
-            margin-bottom: 28px;
-            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.1));
+            margin-bottom: 30px;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.12));
         }
 
         .avatar {
-            width: 115px;
-            height: 115px;
-            border-radius: 28px;
+            width: 120px;
+            height: 120px;
+            border-radius: 32px;
             object-fit: cover;
-            border: 2px solid #ffffff;
-            display: block;
+            border: 2.5px solid #ffffff;
+            background: #fff;
         }
 
         .verified-badge {
             position: absolute;
-            bottom: -5px;
-            right: -5px;
+            bottom: -4px;
+            right: -4px;
             background: var(--primary-blue);
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
-            border: 3.5px solid #ffffff;
+            border: 4px solid #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,113,227,0.3);
+            box-shadow: 0 8px 16px rgba(0,113,227,0.35);
         }
 
         h1 {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 700;
-            letter-spacing: -0.04em;
-            margin-bottom: 6px;
+            letter-spacing: -0.05em;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
 
@@ -108,46 +115,47 @@
             font-size: 13px;
             color: var(--apple-grey);
             font-weight: 600;
-            margin-bottom: 40px;
-            line-height: 1.4;
+            margin-bottom: 45px;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            text-align: center;
+            opacity: 0.9;
         }
 
+        /* Stack de Links Nítidos */
         .links-stack {
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
 
         .btn-link {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 18px 24px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            padding: 20px 24px;
             text-decoration: none;
             color: var(--apple-black);
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .btn-link:hover {
-            background: rgba(255, 255, 255, 1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.04);
-            border-color: rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+            border-color: rgba(0,0,0,0.1);
         }
 
         .btn-link:active {
             transform: scale(0.96);
+            transition: all 0.1s;
         }
 
         .btn-primary {
@@ -156,36 +164,47 @@
             border: none;
         }
 
+        .btn-primary:hover {
+            background: #000;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
         .chevron {
             font-size: 18px;
             font-weight: 300;
-            opacity: 0.3;
+            opacity: 0.25;
+            transition: transform 0.4s ease;
+        }
+        
+        .btn-link:hover .chevron {
+            transform: translateX(5px);
+            opacity: 0.7;
         }
 
-        /* RODAPÉ COM MUDANÇA DE COR AO CLICAR */
+        /* Rodapé de Alta Precisão */
         footer {
             margin-top: auto;
-            padding-top: 50px;
+            padding-top: 55px;
             font-size: 10px;
             color: var(--apple-grey);
-            letter-spacing: 0.15em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            opacity: 0.7;
             text-align: center;
         }
 
         footer a {
             text-decoration: none;
             color: inherit;
-            transition: color 0.2s ease; /* Transição suave para a cor */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
         }
 
-        /* MUDANÇA DE COR NO MOMENTO DO CLIQUE */
         footer a:active {
-            color: var(--primary-blue); /* Muda para azul Apple ao clicar */
+            color: var(--primary-blue);
+            transform: scale(0.92);
         }
 
-        footer b { color: var(--apple-black); font-weight: 700; color: inherit; }
+        footer b { color: var(--apple-black); font-weight: 800; }
     </style>
 </head>
 <body>
@@ -194,10 +213,10 @@
         <div class="container">
             
             <div class="avatar-box">
-                <img src="https://i.ibb.co/XrFMFfv7/perfil.jpg" alt="Perfil Oficial" class="avatar">
+                <img src="https://i.ibb.co/XrFMFfv7/perfil.jpg" alt="Perfil" class="avatar">
                 <div class="verified-badge">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 6L9 17L4 12" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M20 6L9 17L4 12" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
             </div>
